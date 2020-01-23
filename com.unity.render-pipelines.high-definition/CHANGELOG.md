@@ -51,6 +51,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added documentation for the rayTracingSupported method in HDRP
 - Added user-selectable format for the post processing passes. 
 - Added support for alpha channel in some post-processing passes (DoF, TAA, Uber).
+- Added warnings in FrameSettings inspector when using DXR and atempting to use Asynchronous Execution.
 
 ### Fixed
 - Sorting, undo, labels, layout in the Lighting Explorer.
@@ -313,6 +314,25 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fixed particle lights.
 - Improved behavior of lights and probe going over the HDRP asset limits.
 - Fixed issue triggered when last punctual light is disabled and more than one camera is used.
+- Fixed Custom Pass nullref due to the new Profiling Sample API changes
+- Fixed the black/grey screen issue on after post process Custom Passes in non dev builds.
+- Fixed XR rendering locked to vsync of main display with Standalone Player.
+- Fixed custom pass cleanup not called at the right time when using multiple volumes.
+- Fixed an issue on metal with edge of decal having artifact by delaying discard of fragments during decal projection
+- Fixed various shader warning
+- Fixing unnecessary memory allocations in the ray tracing cluster build
+- Fixed duplicate column labels in LightEditor's light tab
+- Fixed white and dark flashes on scenes with very high or very low exposure when Automatic Exposure is being used.
+- Fixed an issue where passing a null ProfilingSampler would cause a null ref exception.
+- Fixed memory leak in Sky when in matcap mode.
+- Fixed compilation issues on platform that don't support VR.
+- Fixed migration code called when we create a new HDRP asset.
+- Fixed an issue where ambient occlusion and screen space reflections editors would generate null ref exceptions when HDRP was not set as the current pipeline.
+- Fixed a null reference exception in the probe UI when no HDRP asset is present.
+- Fixed the outline example in the doc (sampling range was dependent on screen resolution)
+- Fixed a null reference exception in the HDRI Sky editor when no HDRP asset is present.
+- Fixed an issue where Decal Projectors created from script where rotated around the X axis by 90°.
+- Fixed frustum used to compute Density Volumes visibility when projection matrix is oblique.
 - Fixed various issues with time and animated materials (cases 1210068, 1210064).
 
 ### Changed
@@ -370,7 +390,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Now each camera has its own Volume Stack. This allows Volume Parameters to be updated as early as possible and be ready for the whole frame without conflicts between cameras.
 - Disable Async for SSR, SSAO and Contact shadow when aggregated ray tracing frame setting is on.
 - Improved performance when entering play mode without domain reload by a factor of ~25
-- Renamened the camera profiling sample to include the camera name
+- Renamed the camera profiling sample to include the camera name
+- Discarding the ray tracing history for AO, reflection, diffuse shadows and GI when the viewport size changes.
+- Renamed the camera profiling sample to include the camera name
+- Renamed the post processing graphic formats to match the new convention.
+- The restart in Wizard for DXR will always be last fix from now on
+- Refactoring pre-existing materials to share more shader code between rasterization and ray tracing.
+- Setting a material's Refraction Model to Thin does not overwrite the Thickness and Transmission Absorption Distance anymore.
+- Removed Wind textures from runtime as wind is no longer built into the pipeline
 
 ## [7.1.1] - 2019-09-05
 
