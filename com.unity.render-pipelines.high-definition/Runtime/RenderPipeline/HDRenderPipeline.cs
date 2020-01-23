@@ -1416,10 +1416,7 @@ namespace UnityEngine.Rendering.HighDefinition
                     }
                     else
                     {
-                        // No parent camera.
-                        // That is wrong (reflection could be view-independent but still requested by another view),
-                        // but it appears there is no way to access the camera. Can't figure out the logic here.
-                        // The consequence of this is that spherical reflection probes don't have working animated materials.
+                        // No single parent camera for view dependent probes.
                         parentCamera = null;
 
                         bool visibleInOneViewer = false;
