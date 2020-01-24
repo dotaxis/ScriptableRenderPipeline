@@ -37,6 +37,8 @@ namespace UnityEditor.Rendering.HighDefinition
 
         internal const int k_NeverProcessedMaterialVersion = -1;
 
+        private bool m_CreatedThisSession = false;
+
         public static GameObject defaultScenePrefab
         {
             get => instance.m_DefaultScenePrefabSaved;
@@ -97,6 +99,11 @@ namespace UnityEditor.Rendering.HighDefinition
             }
         }
 
+        public static bool createdThisSession
+        {
+            get => instance.m_CreatedThisSession;
+        }
+
         //singleton pattern
         static HDProjectSettings s_Instance;
         static HDProjectSettings instance => s_Instance ?? CreateOrLoad();
@@ -115,6 +122,7 @@ namespace UnityEditor.Rendering.HighDefinition
             {
                 HDProjectSettings created = CreateInstance<HDProjectSettings>();
                 created.hideFlags = HideFlags.HideAndDontSave;
+                created.m_CreatedThisSession = true; 
             }
 
             System.Diagnostics.Debug.Assert(s_Instance != null);
