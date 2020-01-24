@@ -2,7 +2,7 @@ Shader "Hidden/HDRP/Deferred"
 {
     Properties
     {
-        [HideInInspector] _StencilMask("_StencilMask", Int) = 6
+        [HideInInspector] _StencilMask("_StencilMask", Int) = 6 // StencilUsage.RequiresDeferredLighting | StencilUsage.SubsurfaceScattering
         [HideInInspector] _StencilRef("", Int) = 0
         [HideInInspector] _StencilCmp("", Int) = 3
     }
