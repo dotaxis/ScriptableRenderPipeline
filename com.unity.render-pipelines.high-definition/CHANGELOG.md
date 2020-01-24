@@ -327,10 +327,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fixed memory leak in Sky when in matcap mode.
 - Fixed compilation issues on platform that don't support VR.
 - Fixed migration code called when we create a new HDRP asset.
+- Fixed RemoveComponent on Camera contextual menu to not remove Camera while a component depend on it.
 - Fixed an issue where ambient occlusion and screen space reflections editors would generate null ref exceptions when HDRP was not set as the current pipeline.
 - Fixed a null reference exception in the probe UI when no HDRP asset is present.
 - Fixed the outline example in the doc (sampling range was dependent on screen resolution)
 - Fixed a null reference exception in the HDRI Sky editor when no HDRP asset is present.
+- Fixed an issue where Decal Projectors created from script where rotated around the X axis by 90°.
+- Fixed frustum used to compute Density Volumes visibility when projection matrix is oblique.
+- Fixed a null reference exception in Path Tracing, Recursive Rendering and raytraced Global Illumination editors when no HDRP asset is present.
 
 ### Changed
 - Color buffer pyramid is not allocated anymore if neither refraction nor distortion are enabled
@@ -394,7 +398,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - The restart in Wizard for DXR will always be last fix from now on
 - Refactoring pre-existing materials to share more shader code between rasterization and ray tracing.
 - Setting a material's Refraction Model to Thin does not overwrite the Thickness and Transmission Absorption Distance anymore.
-- Removed Wind textures from runtime as wind is no longer built into the pipeline.
+- Removed Wind textures from runtime as wind is no longer built into the pipeline
+- Expose StartSinglePass() and StopSinglePass() as public interface for XRPass
 - Refactor internal usage of Stencil bits.
 - Changed how the material upgrader works and added documentation for it.
 
