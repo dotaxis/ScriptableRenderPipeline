@@ -394,7 +394,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - The restart in Wizard for DXR will always be last fix from now on
 - Refactoring pre-existing materials to share more shader code between rasterization and ray tracing.
 - Setting a material's Refraction Model to Thin does not overwrite the Thickness and Transmission Absorption Distance anymore.
-- Removed Wind textures from runtime as wind is no longer built into the pipeline
+- Removed Wind textures from runtime as wind is no longer built into the pipeline.
+- Refactor internal usage of Stencil bits.
+- Changed how the material upgrader works and added documentation for it.
 
 ## [7.1.1] - 2019-09-05
 
