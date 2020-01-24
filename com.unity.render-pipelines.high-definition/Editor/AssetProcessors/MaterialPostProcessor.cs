@@ -54,7 +54,7 @@ namespace UnityEditor.Rendering.HighDefinition
                     {
                         string commandLineOptions = System.Environment.CommandLine;
                         bool inTestSuite = commandLineOptions.Contains("-testResults");
-                        if (!inTestSuite)
+                        if (!inTestSuite && curUpgradeVersion != HDProjectSettings.k_NeverProcessedMaterialVersion)
                         {
                             EditorUtility.DisplayDialog("HDRP Material Migration", "Your High Definition Render Pipeline version requires a material upgrade." +
                                                         " All materials in the project will be re-imported and saved to disk (and checked out if relevant) if changed. \n" +
