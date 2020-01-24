@@ -118,7 +118,7 @@ namespace UnityEditor.VFX
             yield return new KeyValuePair<string, VFXShaderWriter>("${VFXStencilDistortionVectors}", stencilForDistortion);
 
             var stencilForGBuffer = new VFXShaderWriter();
-            stencilForDistortion.WriteFormat("Stencil\n{{\n WriteMask {0}\n Ref {1}\n Comp Always\n Pass Replace\n}}", stencilGBufferWriteMask, stencilRefGBuffer);
+            stencilForGBuffer.WriteFormat("Stencil\n{{\n WriteMask {0}\n Ref {1}\n Comp Always\n Pass Replace\n}}", stencilGBufferWriteMask, stencilRefGBuffer);
             yield return new KeyValuePair<string, VFXShaderWriter>("${VFXStencilGBuffer}", stencilForGBuffer);
         }
     }
